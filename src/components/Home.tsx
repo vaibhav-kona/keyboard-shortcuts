@@ -1,6 +1,6 @@
 import { PureComponent } from "react";
 import styled from "styled-components";
-import KeyboardShortcuts from "./KeyboardShortcuts";
+import KeyboardShortcuts from "../common/keyboardShortcuts/KeyboardShortcuts";
 
 interface StyledContainerProps {
   isBiggerText: boolean;
@@ -9,6 +9,7 @@ interface StyledContainerProps {
 const StyledContainer = styled.div<StyledContainerProps>`
   height: 200px;
   font-size: ${(props) => (props.isBiggerText ? "48px" : "16px")};
+  background-color: lightblue;
 `;
 
 interface State {
@@ -41,15 +42,6 @@ class Home extends PureComponent<{}, State> {
           callback={this.toggleBiggerText}
           description="Toggle bigger text"
         />
-
-        {/* <button type="button" onClick={this.toggleBiggerText}>
-          {isBiggerText ? "Normal" : "Bigger"}
-        </button> */}
-        <div>
-          {isBiggerText
-            ? "Bigger text is displayed"
-            : "Normal text is displayed"}
-        </div>
       </>
     );
   }
