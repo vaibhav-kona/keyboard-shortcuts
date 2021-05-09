@@ -4,16 +4,20 @@ import KeyboardShortcuts from "../common/keyboardShortcuts/KeyboardShortcuts";
 
 interface StyledContainerProps {
   isBiggerText: boolean;
+  otherBackground: boolean;
 }
 
 const StyledContainer = styled.div<StyledContainerProps>`
   height: 200px;
   font-size: ${(props) => (props.isBiggerText ? "48px" : "16px")};
-  background-color: lightblue;
+  background-color: ;
+  background-color: ${(props) =>
+    props.otherBackground ? "lightgreen" : "lightblue"};
 `;
 
 interface State {
   isBiggerText: boolean;
+  otherBackground: boolean;
 }
 
 class Home extends PureComponent<{}, State> {
@@ -21,6 +25,7 @@ class Home extends PureComponent<{}, State> {
     super(props);
     this.state = {
       isBiggerText: false,
+      otherBackground: false,
     };
   }
 
@@ -30,17 +35,34 @@ class Home extends PureComponent<{}, State> {
     });
   };
 
+  toggleBackgroundColor = () => {
+    this.setState((prevState: State) => {
+      return { otherBackground: !prevState.otherBackground };
+    });
+  };
+
   render() {
-    const { isBiggerText } = this.state;
+    const { isBiggerText, otherBackground } = this.state;
 
     return (
       <>
-        <StyledContainer isBiggerText={isBiggerText}>Home!</StyledContainer>
+        <StyledContainer
+          otherBackground={otherBackground}
+          isBiggerText={isBiggerText}
+        >
+          Home!
+        </StyledContainer>
 
         <KeyboardShortcuts
           combo="shift+c"
           callback={this.toggleBiggerText}
           description="Toggle bigger text"
+        />
+
+        <KeyboardShortcuts
+          combo="shift+b"
+          callback={this.toggleBackgroundColor}
+          description="Toggle background color"
         />
       </>
     );
