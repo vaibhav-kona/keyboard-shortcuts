@@ -1,3 +1,27 @@
+Demo app - https://master.d31i5cqkpfor4z.amplifyapp.com/
+
+## How to use the KeyboardShortcuts component?
+
+3 props are to be passed for the KeyboardShortcuts component.
+
+- combo (:string) Eg: 'shift', 'shift+c', 'shift+b'
+- callback(:function) -> a function to be executed when key combo is registered
+- description (:string) Details on what the key combo does
+
+Eg :
+
+      <KeyboardShortcuts
+        combo="shift+c"
+        callback={this.toggleBiggerText}
+        description="Toggle bigger text"
+      />
+
+- /src/common/KeyboardShortcuts/index.tsx has the common component to add shortcut combos and callbacks.
+- Keybindings are unbinded when the component gets unmounted.
+- Keyboard shortcuts can be maintained per page by using the reducer in any other app.
+- List of the keyboard shortcuts are displayed per page in this sample app.
+- https://github.com/dmauro/Keypress hasn't been updated in 3 years. As an alternate, https://github.com/jaywcjlove/hotkeys/ is used as base library for listening to keybindings.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

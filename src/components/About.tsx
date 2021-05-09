@@ -1,6 +1,6 @@
 import { PureComponent } from "react";
 import styled from "styled-components";
-import KeyboardShortcuts from "../common/keyboardShortcuts/KeyboardShortcuts";
+import KeyboardShortcuts from "../common/keyboardShortcuts";
 
 interface StyledContainerProps {
   isDarkBackground: boolean;
